@@ -11,6 +11,7 @@ import { ProductComponent } from './product/product.component';
 import { StarsComponent } from './stars/stars.component';
 import { HomeComponent } from './home/home.component';
 import { ProductInfoComponent } from './product-info/product-info.component';
+import { ProductService } from './shared/product.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { ProductInfoComponent } from './product-info/product-info.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
