@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { StarsComponent } from './stars/stars.component';
 import { HomeComponent } from './home/home.component';
 import { ProductInfoComponent } from './product-info/product-info.component';
 import { ProductService } from './shared/product.service';
+import { ProductFilterPipe } from './pipe/product-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -23,11 +25,14 @@ import { ProductService } from './shared/product.service';
     ProductComponent,
     StarsComponent,
     HomeComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    ProductFilterPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
