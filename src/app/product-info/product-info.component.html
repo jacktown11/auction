@@ -11,6 +11,14 @@
   </p>
 </div>
 <div class="product-comments well">
+  <div class="add-comment">
+    <button class="btn btn-success" (click)="isHideNewComment = !isHideNewComment;">评论</button>
+    <div class="new-comment" [hidden]="isHideNewComment">
+      <app-stars [(rating)]="newRating" isClickable="true"></app-stars>
+      <textarea cols="30" rows="10" [(ngModel)]="newComment"></textarea><br>
+      <button class="btn btn-info" (click)="submitComment($event)">提交</button>
+    </div>
+  </div>
   <div *ngFor="let comment of comments">
     <hr>
     <app-stars [rating]="comment.rating"></app-stars>
