@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService, Product } from '../shared/product.service';
-import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
+import { ProductService, Product, ProductSearchParams } from '../shared/product.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -9,20 +8,16 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  private keywordControl: FormControl = new FormControl();
+  private products: Observable<Product[]>;
 
-  private keyword: string;
-
-  private products: Product[];
-
-  constructor(private productService: ProductService) {
-    this.keywordControl.valueChanges
-      .pipe(debounceTime(500))
-      .subscribe((keyword: string) => this.keyword = keyword);
-  }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.products = this.productService.getAllProducts();
+    this.productService.searchEvent
+      .subscribe((params: ProductSearchParams) => {
+        this.products = this.productService.getFilteredProducts(params);
+      });
   }
 
 }

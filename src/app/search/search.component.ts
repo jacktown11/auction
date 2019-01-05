@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ProductService } from '../shared/product.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -10,11 +11,11 @@ import { ProductService } from '../shared/product.service';
 export class SearchComponent implements OnInit {
 
   formModel: FormGroup;
-  categories: string[];
+  categories: Observable<string[]>;
 
   constructor(private fb: FormBuilder, private productService: ProductService) {
     this.formModel = fb.group({
-      productTitle: ['', [Validators.required, Validators.minLength(3)]],
+      productTitle: ['', [Validators.minLength(3)]],
       productPrice: [null, positiveNumberValidator],
       category: [-1]
     });
@@ -25,11 +26,10 @@ export class SearchComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.formModel.status);
     if (this.formModel.valid) {
-      console.log(this.formModel.value);
+      this.productService.doSearch(this.formModel.value);
     } else {
-      console.log('表单数据不完全正确，不能提交');
+      console.log('表单参数不完整');
     }
   }
 }

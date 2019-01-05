@@ -11,13 +11,12 @@
   </div>
   <div class="form-group">
     <label for="productCategory">商品类别</label>
-    <select formControlName="productPrice" name="" id="productCategory" class="form-control">
+    <select formControlName="category" id="productCategory" class="form-control">
       <option value="-1">所有分类</option>
-      <option *ngFor="let category of categories" value="category">{{category}}</option>
+      <option *ngFor="let category of categories | async" [value]="category">{{category}}</option>
     </select>
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary btn-block">搜索</button>
   </div>
 </form>
-{{formModel.status}}

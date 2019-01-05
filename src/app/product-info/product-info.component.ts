@@ -13,7 +13,7 @@ export class ProductInfoComponent implements OnInit {
   newRating: number = 5;
   newComment: string = '';
 
-  nextCommentId: number;
+  nextCommentId: number = 0;
   isHideNewComment: boolean = true;
 
   constructor(
@@ -23,10 +23,14 @@ export class ProductInfoComponent implements OnInit {
 
   ngOnInit() {
     let productId = this.routerInfo.snapshot.params['id'];
-    this.product = this.productService.getProductById(productId);
-    this.comments = this.productService.getCommentsForProduct(productId);
-    let maxId = this.comments.reduce((prev, cur) => Math.max(prev, cur.id), 0);
-    this.nextCommentId = maxId + 1;
+    this.productService.getProductById(productId)
+      .subscribe((data) => this.product = data);
+    this.productService.getCommentsForProduct(productId)
+      .subscribe((data) => {
+        this.comments = data;
+        let maxId = this.comments.reduce((prev, cur) => Math.max(prev, cur.id), 0);
+        this.nextCommentId = maxId + 1;
+      });
   }
 
   submitComment(event: any): void {

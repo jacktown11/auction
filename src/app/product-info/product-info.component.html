@@ -2,12 +2,12 @@
   <p>
     <img src="https://via.placeholder.com/840x320" alt="商品详情图片"><br>
   </p>
-  <p class="pull-right">{{product.price}}元</p>
-  <h4 class="title">{{product.title}}</h4>
-  <p>{{product.desc}}</p>
+  <p class="pull-right">{{product?.price}}元</p>
+  <h4 class="title">{{product?.title}}</h4>
+  <p>{{product?.desc}}</p>
   <p class="comment-overview">
-    <span class="pull-right">{{comments.length}}人评论</span>
-    <app-stars [rating]="product.rating"></app-stars>
+    <span class="pull-right">{{comments?.length}}人评论</span>
+    <app-stars [rating]="product?.rating"></app-stars>
   </p>
 </div>
 <div class="product-comments well">
