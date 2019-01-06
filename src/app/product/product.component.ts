@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  private products: Observable<Product[]>;
+  products: Observable<Product[]>;
 
   constructor(private productService: ProductService) { }
 

@@ -15,7 +15,7 @@ export class StarsComponent implements OnInit, OnChanges {
   @Input()
   isClickable: boolean = false;
 
-  private stars: boolean[] = [];
+  stars: boolean[] = [];
 
   constructor() { }
 
