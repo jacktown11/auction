@@ -1,6 +1,8 @@
 # Auction
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
+该项目使用 [Angular CLI](https://github.com/angular/angular-cli) 7.1.3 版本构建，跟随视频学习 angular 过程中完成。
+
+`resource` 文件夹是后端服务文件，可以将其复制到另外的文件夹中，作为后端服务启动。
 
 ## Development server
 
